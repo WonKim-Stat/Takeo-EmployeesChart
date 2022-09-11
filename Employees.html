@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees Details</title>
+    <link rel="stylesheet" href="css/employees.css" />
+    <script src="./js/Employees.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="title">Employees Details</div>
+        <div class="AddRow">
+          <button id="add-btn" onclick="Addrow()">Add Employees Row</button>
+        </div>
+      </div>
+      <div class="contents-grid">
+        <div class="contents" id="row1">
+          <div class="Detail-Info-Grid">
+            <input type="text" id="designation1" placeholder="Designation" />
+            <input type="text" id="name1" placeholder="Employee Name" />
+            <input type="text" id="id1" placeholder="Employee ID" />
+            <input type="text" id="from1" placeholder="Prev Company" />
+          </div>
+          <div class="remove" id="RemoveRow1">
+            <button class="remove-btn" onclick="RemoveRow()">Remove</button>
+          </div>
+        </div>
+      </div>
+      <div class="submit">
+        <button id="submit-btn">Submit</button>
+      </div>
+    </div>
+  </body>
+</html>
