@@ -50,8 +50,8 @@ SbmButton.addEventListener("click", submit);
 
 let Employees = []; // save data
 
-function submit() {
-  //   event.preventDefault();
+function submit(event) {
+  event.preventDefault();
   for (let i = 0; i < RowNum; i++) {
     Employees[i] = {
       designation: document.querySelector(`#designation${i + 1}`).value,
@@ -63,20 +63,37 @@ function submit() {
 
   const data = Employees;
   console.log(data);
-  //   const url = " http://localhost:3000/posts";
-  //   const method = "POST";
-  //   fetch(url, {
-  //     method,
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
+  const url = " http://localhost:3000/employees";
+  const method = "POST";
+  fetch(url, {
+    method,
+    body: JSON.stringify({ ...data }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+
+  createTable();
+
+  function createTable() {
+    var headers = ["Designation", "Name", "ID", "Previous Company"];
+    var table = document.createElement("TABLE"); //makes a table element for the page
+
+    for (var i = 0; i < Employees.length; i++) {
+      var row = table.insertRow(i);
+      row.insertCell(0).innerHTML = Employees[i].designation;
+      row.insertCell(1).innerHTML = Employees[i].name;
+      row.insertCell(2).innerHTML = Employees[i].id;
+      row.insertCell(3).innerHTML = Employees[i].from;
+    }
+
+    var header = table.createTHead();
+    var headerRow = header.insertRow(0);
+    for (var i = 0; i < headers.length; i++) {
+      headerRow.insertCell(i).innerHTML = headers[i];
+    }
+
+    document.body.append(table);
+  }
 }
-
-// function submit() {
-//     const
-// }
-
-// document.getElementById("AddEmployeesRow").addEventListener("click", Addrow);
